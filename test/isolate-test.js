@@ -5,9 +5,9 @@ var vows = require('../lib/vows'),
 
 function generateTopic(args, file) {
   return function () {
-    var cmd = './bin/vows' + ' -i ' + (args || '') +
-              ' ./test/fixtures/isolate/' + file,
-        options = {cwd: path.resolve(__dirname + '/../')},
+    var cmd = path.resolve('bin', 'vows') + ' -i ' + (args || '') + ' ' +
+              path.resolve('test', 'fixtures', 'isolate', file),
+        options = {cwd: path.resolve(__dirname, '..')},
         callback = this.callback;
 
     exec(cmd, options, function (err, stdout, stderr) {

@@ -5,9 +5,10 @@ var assert = require('assert'),
 
 function generateTopic(supress) {
     return function () {
-        var cmd = './bin/vows ' + (supress ? '--supress-stdout ' : '') + 
-                  './test/fixtures/supress-stdout/output.js',
-            options = {cwd: path.resolve(__dirname + '/../')},
+        var cmd = path.resolve('bin', 'vows') + ' ' +
+                  (supress ? '--supress-stdout ' : '') +
+                  path.resolve('test', 'fixtures', 'supress-stdout', 'output.js'),
+            options = {cwd: path.resolve(__dirname, '..')},
             callback = this.callback;
 
         exec(cmd, options, function (err, stdout) {
